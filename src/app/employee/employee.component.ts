@@ -8,17 +8,19 @@ import { AuthonticationService } from '../authontication.service';
 })
 export class EmployeeComponent implements OnInit {
   userExisted: boolean = false
+  salarySlip: string = ''
   constructor(private authservice: AuthonticationService) {
     this.userExisted = this.authservice.isAuthonticated()
   }
 
   ngOnInit(): void { }
-
   getSalarySlip() {
     // if (this.userExisted) {
     if (this.authservice.isAuthonticated()) {
+      this.salarySlip = "salary slip"
       return "salary slip"
     }
+    this.salarySlip = "not authorize"
     return "not authorize"
   }
 
